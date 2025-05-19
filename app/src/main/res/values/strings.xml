@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Water Tracker</string>
+    <string name="daily_goal">Дневная норма воды</string>
+    <string name="total_water_default">Выпито: 0 мл</string>
+    <string name="remaining_water_default">Осталось: 2000 мл</string>
+    <string name="total_water">Выпито: %d мл</string>
+    <string name="remaining_water">Осталось: %d мл</string>
+    <string name="add_250_ml">+250 мл</string>
+    <string name="add_500_ml">+500 мл</string>
+    <string name="today_history">Сегодня</string>
+</resources>

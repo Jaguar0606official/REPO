@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#2196F3</color>
+    <color name="light_blue">#E3F2FD</color>
+    <color name="warning">#FF9800</color>
+    <color name="danger">#F44336</color>
+    <color name="warning_burgundy">#800020</color>
+    <color name="danger_red">#FF0000</color>
+    <color name="danger_yellow">#fcb603</color>
+</resources>
