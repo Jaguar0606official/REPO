@@ -102,8 +102,17 @@ public class WaterIntakeManager {
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
+    public void cleanOldData(int daysToKeep) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, -daysToKeep);
+        Date threshold = calendar.getTime();
+
+        intakeHistory.removeIf(intake -> intake.getTimestamp().before(threshold));
+        saveHistory();
+    }
 
     public void addIntake(int amount) {
+        checkDayReset();
         if (!canAddIntake(amount)) return;
         WaterIntake intake = new WaterIntake(amount, new Date());
         intakeHistory.add(intake);
@@ -136,13 +145,15 @@ public class WaterIntakeManager {
     public List<WaterIntake> getTodayIntakes() {
         List<WaterIntake> todayIntakes = new ArrayList<>();
         Date today = getStartOfDay();
+
         for (WaterIntake intake : intakeHistory) {
-            if (intake.getTimestamp().after(today)) {
+            if (isSameDay(intake.getTimestamp(), today)) {
                 todayIntakes.add(intake);
             }
         }
         return todayIntakes;
     }
+
 
     public Map<String, List<WaterIntake>> getDailyHistory() {
         Map<String, List<WaterIntake>> dailyHistory = new HashMap<>();
@@ -196,6 +207,32 @@ public class WaterIntakeManager {
         calculateTodayIntake();
         saveHistory();
     }
+    public void checkDayReset() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        String today = dateFormat.format(new Date());
+        String lastDate = sharedPreferences.getString(LAST_DATE_KEY, "");
+
+        if (!today.equals(lastDate)) {
+            // День изменился, сбрасываем дневные данные
+            totalIntake = 0;
+            sharedPreferences.edit()
+                    .putString(LAST_DATE_KEY, today)
+                    .apply();
+        }
+    }
+
+
+    private boolean isSameDay(Date date1, Date date2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(date1);
+        cal2.setTime(date2);
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH) &&
+                cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
+    }
+
+
 
     public boolean isDailyGoalExceeded() {
         return totalIntake > DAILY_GOAL;

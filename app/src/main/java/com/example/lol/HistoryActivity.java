@@ -15,6 +15,7 @@ import com.example.lol.adapters.DailyHistoryAdapter;
 import com.example.lol.models.DailyHistoryItem;
 import com.example.lol.models.WaterIntake;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -122,4 +123,22 @@ public class HistoryActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
+    private List<DailyHistoryItem> getFilteredHistory() {
+        Map<String, List<WaterIntake>> dailyHistory = waterIntakeManager.getDailyHistory();
+        List<DailyHistoryItem> filteredItems = new ArrayList<>();
+
+        for (Map.Entry<String, List<WaterIntake>> entry : dailyHistory.entrySet()) {
+            int dayTotal = 0;
+            for (WaterIntake intake : entry.getValue()) {
+                dayTotal += intake.getAmount();
+            }
+            filteredItems.add(new DailyHistoryItem(entry.getKey(), entry.getValue(), dayTotal));
+        }
+
+        // Сортируем по дате (новые сверху)
+        Collections.sort(filteredItems, (item1, item2) -> item2.getDate().compareTo(item1.getDate()));
+
+        return filteredItems;
+    }
+
 }

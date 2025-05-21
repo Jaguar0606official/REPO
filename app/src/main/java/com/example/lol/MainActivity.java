@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         checkDayChange();
         updateUI();
 
+        waterIntakeManager.cleanOldData(30);
+
         progressBar = findViewById(R.id.progress_bar);
         progressBar.setMax(2000);
         progressBar.setProgress(0); // Начинаем с 0
@@ -289,7 +291,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        waterIntakeManager.checkDayReset(); // Проверяем смену дня
+        updateUI();
         // Для Android 13+ (API level 33) добавляем флаг экспорта
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(
