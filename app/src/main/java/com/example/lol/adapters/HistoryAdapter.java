@@ -38,7 +38,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         // Устанавливаем цвет в зависимости от количества
         int color;
         if (intake.getAmount() >= 500) {
-            color = ContextCompat.getColor(holder.itemView.getContext(), R.color.blue);
+            color = ContextCompat.getColor(holder.itemView.getContext(), R.color.topa);
         } else {
             color = ContextCompat.getColor(holder.itemView.getContext(), android.R.color.black);
         }
