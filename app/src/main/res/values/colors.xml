@@ -7,4 +7,6 @@
     <color name="warning_burgundy">#800020</color>
     <color name="danger_red">#FF0000</color>
     <color name="danger_yellow">#fcb603</color>
+    <color name="pop">#303d92</color>
+
 </resources>

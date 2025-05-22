@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#9DC5E2"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/light_blue"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/daily_goal"
         android:textSize="24sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -21,10 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_marginTop="16dp"
+        android:indeterminate="false"
         android:max="2000"
         android:progress="0"
-        android:progressDrawable="@drawable/progress_bar_water"
-        android:indeterminate="false"/>
+        android:progressDrawable="@drawable/progress_bar_water" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/total_water_default"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_remaining"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/remaining_water_default"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +64,7 @@
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
-            android:text="@string/add_250_ml"/>
+            android:text="@string/add_250_ml" />
 
         <Button
             android:id="@+id/btn_add_500"
@@ -73,7 +73,7 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
-            android:text="@string/add_500_ml"/>
+            android:text="@string/add_500_ml" />
     </LinearLayout>
 
     <TextView
@@ -82,33 +82,37 @@
         android:layout_marginTop="32dp"
         android:text="@string/today_history"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/btn_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Вся история"
-        android:backgroundTint="@color/blue"/>
+        android:backgroundTint="#3B71C1"
+        android:text="Вся история" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/history_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_weight="1" />
+
     <Button
         android:id="@+id/btn_clear_today"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Очистить историю за сегодня"
-        android:backgroundTint="@color/warning_burgundy"/>
+        android:backgroundTint="#3B70C0"
+        android:text="Очистить историю за сегодня" />
+
     <Button
         android:id="@+id/test_notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Тест уведомления"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#323F8A"
+        android:text="Тест уведомления" />
 
 </LinearLayout>

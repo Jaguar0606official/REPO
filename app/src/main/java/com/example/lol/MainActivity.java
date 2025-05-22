@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (total > 2000) {
             color = ContextCompat.getColor(this, R.color.danger_yellow);
         } else {
-            color = ContextCompat.getColor(this, R.color.blue);
+            color = ContextCompat.getColor(this, R.color.pop);
         }
 
         // Получаем drawable прогресса

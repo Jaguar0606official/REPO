@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#9DC5E2"
+    android:backgroundTint="#9DC5E2"
     android:orientation="horizontal"
     android:padding="8dp">
 
@@ -10,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_time"
@@ -18,5 +20,5 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textAlignment="textEnd"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 </LinearLayout>
